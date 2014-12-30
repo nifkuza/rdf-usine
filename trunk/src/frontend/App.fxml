@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.AppController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="%configuration">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#handleMnuLoad" text="%load_configuration" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMnuSave" text="%save_configuration" />
+              	  <MenuItem mnemonicParsing="false" onAction="#handleMnuClose" text="%close" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="%preview">
+               <items>
+                  <RadioMenuItem fx:id="rbmPreview10" mnemonicParsing="false" onAction="#handleMnuPreview" selected="true" text="%10rows" />
+                  <RadioMenuItem fx:id="rbmPreview100" mnemonicParsing="false" onAction="#handleMnuPreview" text="%100rows" />
+                  <RadioMenuItem fx:id="rbmPreview1000" mnemonicParsing="false" onAction="#handleMnuPreview" text="%1000rows" />
+                  <RadioMenuItem fx:id="rbmPreviewAll" mnemonicParsing="false" onAction="#handleMnuPreview" text="%allrows" />
+                  <RadioMenuItem fx:id="rbmNoPreview" mnemonicParsing="false" onAction="#handleMnuPreview" text="%nopreview" />
+               </items>
+            </Menu>
+            <Menu fx:id="mnuExport" disable="true" mnemonicParsing="false" text="%export">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#handleMnuSaveTurtle" text="Turtle" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMnuSaveNTriple" text="N-TRIPLE" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleMnuSaveFuseki" text="SPARQL 1.1 Insert" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="%language">
+              <items>
+                  <RadioMenuItem fx:id="rbmEnglish" mnemonicParsing="false" onAction="#handleMnuLanguage" text="%english" />
+                  <RadioMenuItem fx:id="rbmFrench" mnemonicParsing="false" onAction="#handleMnuLanguage" text="%french" />
+                  <RadioMenuItem fx:id="rbmSpanish" mnemonicParsing="false" onAction="#handleMnuLanguage" text="%spanish" />
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="%help">
+            <items>
+              <MenuItem fx:id="mnuAbout" mnemonicParsing="false" onAction="#handleMnuAbout" text="%about" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <SplitPane dividerPositions="0.45774647887323944" BorderPane.alignment="CENTER">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Accordion fx:id="acdLeft" prefHeight="759.0" prefWidth="491.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <panes>
+                      <TitledPane animated="false" text="%general_settings">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <GridPane prefHeight="680.0" prefWidth="566.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="166.0" minWidth="10.0" prefWidth="114.99999237060547" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="305.00000762939453" minWidth="10.0" prefWidth="305.00000762939453" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <TextField fx:id="txtSourceFile" editable="false" GridPane.columnIndex="1" />
+                                          <Button mnemonicParsing="false" onAction="#handleBtnBrowseAction" text="%files" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+                                          <Label text="%encoding" GridPane.rowIndex="1" />
+                                          <Label text="%delimiter" GridPane.rowIndex="2" />
+                                          <Label text="%subjects" textFill="#1d25c5" GridPane.rowIndex="8">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="%source_files" textFill="#1d25c5">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="%entity" textFill="#1d25c5" GridPane.rowIndex="7">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="txtEntityType" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                          <RadioButton fx:id="rbtSubjectCol" mnemonicParsing="false" onAction="#handleRbtSubjectColChange" selected="true" text="%read" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                          <RadioButton fx:id="rbtSubjectAutonumeric" mnemonicParsing="false" onAction="#handlerbtSubjectAutonumericChange" text="%autonumeric" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                          <TextField fx:id="txtSubjectCol" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                                          <TextField fx:id="txtSubjectPrefix" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+                                          <Label text="%headers" textFill="#1d25c5" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                                             <children>
+                                                <CheckBox fx:id="chkStart" mnemonicParsing="false" onAction="#handleChkStartClick" text="%start" />
+                                                <TextField fx:id="txtStart" prefHeight="39.0" prefWidth="59.0" />
+                                                <Label text="%rows" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6">
+                                             <children>
+                                                <CheckBox fx:id="chkEnd" mnemonicParsing="false" onAction="#handleChkEndClick" text="%process_at_most" />
+                                                <TextField fx:id="txtEnd" prefHeight="39.0" prefWidth="59.0" />
+                                                <Label text="%rows" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                             <children>
+                                                <RadioButton fx:id="rbtHeadersInRow" mnemonicParsing="false" onAction="#handleRbtHeadersInRowChanged" text="%file_headers" />
+                                             </children>
+                                          </HBox>
+                                          <RadioButton fx:id="rbtHeadersCustom" mnemonicParsing="false" onAction="#handleRbtHeadersCustomChanged" text="%custom_headers" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+                                          <Label text="Boundaries:" textFill="#1d25c5" GridPane.rowIndex="5">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="txtEscapeCharacter" prefHeight="39.0" prefWidth="53.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                          <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                             <children>
+                                                <ComboBox fx:id="cbxDelimiter" onAction="#handleCbxDelimiterChange" prefWidth="150.0">
+                                                   <HBox.margin>
+                                                      <Insets top="5.0" />
+                                                   </HBox.margin>
+                                                </ComboBox>
+                                                <Label text="%escape_char">
+                                                   <HBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <TextField fx:id="txtHeadersInRow" prefHeight="39.0" prefWidth="59.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                          <Label fx:id="lblFieldsError" textFill="#e10a0a" GridPane.columnSpan="3" GridPane.rowIndex="14">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="%preview_semicolon" textFill="#1d25c5" GridPane.rowIndex="11">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <ComboBox fx:id="cbxPreview" minWidth="417.0" onAction="#handleCbxPreviewChange" prefHeight="39.0" prefWidth="417.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="11" />
+                                          <Label text="%output_folder" textFill="#1d25c5" GridPane.rowIndex="13">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="txtOutputFolder" onMouseClicked="#handleTxtOutputFolderClick" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                                          <Button fx:id="btnRun" disable="true" mnemonicParsing="false" onAction="#handleBtnRunAction" text="%run" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="13" />
+                                          <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <children>
+                                                <ComboBox fx:id="cbxEncoding" onAction="#handleCbxEncodingChange" prefWidth="150.0" />
+                                             </children>
+                                          </HBox>
+                                          <Button mnemonicParsing="false" onAction="#handleBtnBrowseFolderAction" text="%folder" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                                          <Label text="%prefix" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </TitledPane>
+                      <TitledPane animated="false" text="%fields">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <GridPane layoutX="60.0" layoutY="66.0" prefHeight="680.0" prefWidth="578.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label text="%field_list" textFill="#1d25c5">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <TableView fx:id="lstFields" onMouseClicked="#handleChooseField" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.rowSpan="7" />
+                                          <TextField fx:id="txtAddField" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                          <Button fx:id="btnAddField" alignment="CENTER" mnemonicParsing="false" onAction="#handleAddFieldsRow" text="%add_row" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="11" />
+                                          <Label text="%name" GridPane.rowIndex="11" />
+                                          <Label text="%type" GridPane.rowIndex="12" />
+                                          <ComboBox fx:id="cbxFieldType" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                                          <Button fx:id="btnFieldMoveUp" mnemonicParsing="false" onAction="#handleBtnFieldMoveUp" text="%move_up" GridPane.halignment="CENTER" GridPane.rowIndex="8" />
+                                          <Button fx:id="btnFieldMoveDown" mnemonicParsing="false" onAction="#handleBtnFieldMoveDown" text="%move_down" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" />
+                                          <Button fx:id="btnFieldDelete" mnemonicParsing="false" onAction="#handleBtnFieldDelete" text="%delete" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="8" />
+                                          <Label fx:id="lblFieldsError2" textFill="#e10a0a" GridPane.columnIndex="1" GridPane.columnSpan="2">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Button fx:id="btnAutogenerateFields" mnemonicParsing="false" onAction="#handleBtnAutogenerateFields" text="%auto_generate" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="9" />
+                                          <Label text="%prefix_predicate" GridPane.rowIndex="9" />
+                                          <TextField fx:id="txtPredicatePrefix" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                          <Button fx:id="btnFieldUpdate" disable="true" mnemonicParsing="false" onAction="#handleBtnFieldUpdate" text="%update_row" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="12" />
+                                          <Label text="%prefix_object" GridPane.rowIndex="10" />
+                                          <TextField fx:id="txtObjectPrefix" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                          <Button fx:id="btnFieldDetectTypes" mnemonicParsing="false" onAction="#handleBtnFieldDetectTypes" text="%detect_types" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="10" />
+                                       </children>
+                                    </GridPane>
+                                 </children></AnchorPane>
+                        </content>
+                      </TitledPane>
+                        <TitledPane animated="false" text="%prefixes">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <GridPane layoutX="60.0" layoutY="66.0" prefHeight="680.0" prefWidth="578.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Label text="%prefix_list" textFill="#1d25c5">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <TableView fx:id="lstPrefix" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.rowSpan="7" />
+                                          <TextField fx:id="txtAddPrefixName" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                          <Button fx:id="btnAddPrefix" alignment="CENTER" mnemonicParsing="false" onAction="#handleAddPrefixRow" text="%add_prefix" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="10" />
+                                          <Label text="%name" GridPane.rowIndex="10" />
+                                          <Label text="%reference" GridPane.rowIndex="11" />
+                                          <Button fx:id="btnPrefixDelete" mnemonicParsing="false" onAction="#handleBtnPrefixDelete" text="%delete" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="8" />
+                                          <TextField fx:id="txtAddPrefixReference" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </TitledPane>
+                    </panes>
+                  </Accordion>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="759.0" prefWidth="777.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane fx:id="pnTopRight" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <TextArea fx:id="txtSourceFileContent" editable="false" prefHeight="374.0" prefWidth="686.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <TabPane prefHeight="373.0" prefWidth="686.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <tabs>
+                                  <Tab text="%table_preview">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <TableView fx:id="tblPreview" prefHeight="328.0" prefWidth="686.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                    </content>
+                                  </Tab>
+                                  <Tab text="Turtle">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <TextArea fx:id="txtTurtle" editable="false" prefHeight="328.0" prefWidth="686.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children></AnchorPane>
+                                    </content>
+                                  </Tab>
+                                    <Tab text="N-TRIPLE">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <TextArea fx:id="txtNTriple" editable="false" prefHeight="328.0" prefWidth="686.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </Tab>
+                                </tabs>
+                              </TabPane>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </center>
+</BorderPane>
